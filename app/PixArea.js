@@ -9,13 +9,17 @@ import {
   Alert,
 } from 'react-native';
 import { Ionicons, MaterialCommunityIcons, MaterialIcons, Feather } from '@expo/vector-icons';
+import { useRouter } from 'expo-router';
 
 export default function PixArea() {
+  const router = useRouter();
+
   // Funções dos botões
-  const handleClose = () => Alert.alert('Fechar', 'Você pressionou o botão de fechar.');
+  const handleClose = () => router.push('/');
   const handleHelp = () => Alert.alert('Ajuda', 'Você pressionou o botão de ajuda.');
   const handlePixAction = (acao) => Alert.alert('Pix', `Você escolheu: ${acao}`);
   const handlePreferencia = (pref) => Alert.alert('Preferência', `Você escolheu: ${pref}`);
+
 
   return (
     <SafeAreaView style={styles.container}>

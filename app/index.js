@@ -10,9 +10,7 @@ import giftCard from '../assets/giftCard.png';
 import indiqueImg from '../assets/indiqueImg.png';
 import portabilidadeImg from '../assets/portabilidadeImg.png';
 import LoadingScreen from './enterPage';
-import { Link } from 'expo-router';
-import axios from 'axios';
-
+import { Link, useRouter } from 'expo-router';
 
 export default function Home() {
     const [loading, setLoading] = useState(true)
@@ -20,6 +18,8 @@ export default function Home() {
     const [showEye, setShowEye] = useState(false)
     const [modalVisible, setModalVisible] = useState(false);
     const [agencia] = useState('Nubank');
+
+    const router = useRouter();
 
     useEffect(() => {
         setTimeout(() => {
@@ -51,9 +51,13 @@ export default function Home() {
                                     style={styles.icon}
                                 />
                             </TouchableOpacity>
+                            <TouchableOpacity onPress={() => router.push('/HelpCenter')}>
+                                <Ionicons name="help-circle-outline" style={styles.icon} size={32} />
+                            </TouchableOpacity>
+                            <TouchableOpacity onPress={() => router.push('/protectionCenter')}>
+                                <Ionicons name="checkmark-circle-outline" style={styles.icon} size={32} />
+                            </TouchableOpacity>
 
-                            <Ionicons name="help-circle-outline" style={styles.icon} size={32} />
-                            <Ionicons name="checkmark-circle-outline" style={styles.icon} size={32} />
                         </View>
                     </View>
 
@@ -68,7 +72,6 @@ export default function Home() {
                     transparent={true}
                     onRequestClose={() => setModalVisible(false)}
                 >
-
                     <TouchableWithoutFeedback onPress={() => setModalVisible(false)}>
                         <View style={styles.modalOverlay} />
                     </TouchableWithoutFeedback>
@@ -78,13 +81,15 @@ export default function Home() {
                                 <Ionicons name="close" size={28} color="#fff" />
                             </TouchableOpacity>
                             <View style={styles.modalHeaderCollumn}>
-                                <Ionicons name="person-circle-outline" style={styles.icon} size={32} />
-                                <Link href="/HelpCenter" asChild>
-                                    <TouchableOpacity>
-                                        <MaterialCommunityIcons name="hexagon-outline" size={32} color="white" style={{ marginHorizontal: 10 }} />
-                                    </TouchableOpacity>
-                                </Link>
-                                <Ionicons name="notifications-outline" style={styles.icon} size={32} />
+                                <View style={styles.modalHeaderCollumn}>
+                                    <Ionicons name="person-circle-outline" style={styles.icon} size={32} />
+                                    <Link href="/HelpCenter" asChild>
+                                        <TouchableOpacity>
+                                            <MaterialCommunityIcons name="hexagon-outline" size={32} color="white" style={{ marginHorizontal: 10 }} />
+                                        </TouchableOpacity>
+                                    </Link>
+                                    <Ionicons name="notifications-outline" style={styles.icon} size={32} />
+                                </View>
                             </View>
                         </View>
                         <View style={styles.personDiv}>
@@ -160,7 +165,6 @@ export default function Home() {
                             <Text style={{ color: '#fff', fontSize: 18, fontWeight: 'bold' }}>Sair do Aplicativo</Text>
                         </View>
                     </View>
-
                 </Modal>
 
                 <View style={styles.balance}>
@@ -179,7 +183,7 @@ export default function Home() {
                     <AreaLink
                         icon={<Ionicons name="cash-outline" size={28} color="#fff" />}
                         areaText="Área Pix"
-                        link="/"
+                        link="/PixArea"
                     />
                     <AreaLink
                         icon={<Ionicons name="qr-code-outline" size={28} color="#fff" />}
@@ -207,7 +211,7 @@ export default function Home() {
                     <TopicBlock
                         icon={<Ionicons name="cash-outline" size={28} color="#fff" />}
                         name="Caixinhas"
-                    ></TopicBlock>
+                    />
                     <TopicBlock
                         icon={<Ionicons name="card-outline" size={28} color="#fff" />}
                         name="Meus Cartões"
@@ -307,6 +311,7 @@ export default function Home() {
                         </View>
                     </ScrollView>
                 </View>
+
                 <View style={{
                     flexDirection: 'row',
                     alignItems: 'center',
@@ -321,7 +326,6 @@ export default function Home() {
                 </View>
 
             </ScrollView>
-
         </SafeAreaView>
     )
 }

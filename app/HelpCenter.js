@@ -10,13 +10,15 @@ import {
   Alert,
 } from 'react-native';
 import { Ionicons, MaterialCommunityIcons, MaterialIcons } from '@expo/vector-icons';
+import { useRouter } from 'expo-router';
 
 export default function HelpCenter() {
   const [nome] = useState('Jefferson');
   const [busca, setBusca] = useState('');
+  const router = useRouter();
 
   // Funções dos botões
-  const handleClose = () => Alert.alert('Fechar', 'Você pressionou o botão de fechar.');
+  const handleClose = () => router.push('/'); // <-- volta para index
   const handleBell = () => Alert.alert('Notificações', 'Você pressionou o sino.');
   const handleAtalho = (label) => Alert.alert('Atalho', `Você escolheu: ${label}`);
   const handleDuvida = (label) => Alert.alert('Dúvida', `Você escolheu: ${label}`);
@@ -101,9 +103,12 @@ export default function HelpCenter() {
         {/* Principais dúvidas */}
         <Text style={styles.principaisTitulo}>Principais dúvidas sobre</Text>
 
-        <TouchableOpacity style={styles.principalBox} onPress={() => handlePrincipal('Declaração de Imposto de Renda')}>
+        <TouchableOpacity
+          style={styles.principalBox}
+          onPress={() => router.push('/TaxesDeclaration')}
+        >
           <View style={styles.principalIcon}>
-            <MaterialCommunityIcons name="file-document-outline" size={22} color="#fff" /> {/* Documento */}
+            <MaterialCommunityIcons name="file-document-outline" size={22} color="#fff" />
           </View>
           <View style={{ flex: 1 }}>
             <Text style={styles.principalTitle}>Declaração de Imposto de Renda</Text>
