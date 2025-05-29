@@ -1,6 +1,7 @@
 import React from 'react';
 import { View, Text, StyleSheet, SafeAreaView, FlatList, TouchableOpacity } from 'react-native';
 import { MaterialIcons } from '@expo/vector-icons';
+import { useRouter } from 'expo-router';
 
 const options = [
   {
@@ -34,13 +35,15 @@ const otherOptions = [{
 ];
 
 export default function ProtectionCenter() {
+
+  const router = useRouter();
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
         <TouchableOpacity
           style={{ flexDirection: 'row', alignItems: 'center' }}
           activeOpacity={0.7}
-          onPress={() => { /* ação para voltar ou abrir menu */ }}
+          onPress={() => router.push('/')}
         >
           <MaterialIcons name="chevron-left" size={24} color="#fff" />
           <Text style={styles.headerTitle}>Central de Proteção</Text>
