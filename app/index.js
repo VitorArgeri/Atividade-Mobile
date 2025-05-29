@@ -1,18 +1,20 @@
 import { useState, useEffect } from 'react';
-import { SafeAreaView, StyleSheet, Text, View, TouchableOpacity, Image } from 'react-native-web';
+import { SafeAreaView, StyleSheet, Text, View, TouchableOpacity, Image, Modal, TouchableWithoutFeedback } from 'react-native-web';
 import { Ionicons } from '@expo/vector-icons';
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import { StatusBar } from 'react-native-web';
 import AreaLink from '../components/AreaLink';
 import TopicBlock from '../components/TopicBlock.js';
-import giftCard from '../assets/giftCard.png'; // ajuste para .jpg se necessário
+import giftCard from '../assets/giftCard.png';
 import axios from 'axios';
+
 
 export default function Home() {
     const [films, setFilms] = useState([])
     const [loading, setLoading] = useState(true)
     const [nome, setNome] = useState('Jefferson')
     const [showEye, setShowEye] = useState(false)
+    const [modalVisible, setModalVisible] = useState(false);
 
     useEffect(() => {
         setTimeout(() => {
@@ -29,9 +31,11 @@ export default function Home() {
 
             <View style={styles.header}>
                 <View style={styles.lineOne}>
-                    <View style={styles.iconDiv}>
-                        <Ionicons name="person-circle-outline" style={styles.icon} size={24} />
-                    </View>
+                    <TouchableOpacity onPress={() => setModalVisible(true)}>
+                        <View style={styles.iconDiv}>
+                            <Ionicons name="person-circle-outline" style={styles.icon} size={24} />
+                        </View>
+                    </TouchableOpacity>
                     <View style={styles.nav}>
                         <TouchableOpacity onPress={() => setShowEye(!showEye)}>
                             <Ionicons
@@ -50,6 +54,22 @@ export default function Home() {
                     <Text style={styles.greetingsText}>Olá, {nome}</Text>
                 </View>
             </View>
+
+            <Modal
+                visible={modalVisible}
+                animationType="slide"
+                transparent={true}
+                onRequestClose={() => setModalVisible(false)}
+            >
+
+                <TouchableWithoutFeedback onPress={() => setModalVisible(false)}>
+                    <View style={styles.modalOverlay} />
+                </TouchableWithoutFeedback>
+                <View style={styles.modalContent}>
+                    <Text style={{ color: '#fff', fontSize: 20, marginBottom: 20 }}>Conteúdo do Modal</Text>
+                    {/* Adicione aqui o conteúdo que quiser */}
+                </View>
+            </Modal>
 
             <View style={styles.balance}>
                 <View style={styles.collumnOne}>
@@ -106,11 +126,14 @@ export default function Home() {
 
             <View style={styles.buyDiv}>
                 <Text style={styles.buyText}>Compre sem sair do app</Text>
-                <Image source={giftCard} style={{ width: '100%', height: 150, resizeMode: 'contain', marginTop: 10}} />
+                <Image source={giftCard} style={{ width: '100%', height: 150, resizeMode: 'contain', marginTop: 10 }} />
             </View>
 
             <View style={styles.line}></View>
 
+            <View style={styles.knowMore}>
+                <Text style={styles.title}>Descubra mais</Text>
+            </View>
 
         </SafeAreaView>
     )
@@ -131,13 +154,6 @@ const styles = StyleSheet.create({
         flexDirection: 'row',
         justifyContent: 'space-between',
         width: '100%',
-        alignItems: 'center',
-    },
-    iconDiv: {
-        width: 40,
-        height: 40,
-        borderRadius: 20,
-        justifyContent: 'center',
         alignItems: 'center',
     },
     nav: {
@@ -210,5 +226,30 @@ const styles = StyleSheet.create({
         fontSize: 18,
         fontWeight: 'bold',
         marginBottom: 10,
+    },
+    title: {
+        color: '#fff',
+        fontSize: 18,
+        fontWeight: 'bold',
+        marginBottom: 10,
+        marginLeft: '10%',
+    },
+
+    modalOverlay: {
+        flex: 1,
+        backgroundColor: 'rgba(0,0,0,0.5)',
+    },
+    modalContent: {
+        position: 'absolute',
+        bottom: 0,
+        left: 0,
+        right: 0,
+        backgroundColor: '#222',
+        borderTopLeftRadius: 20,
+        borderTopRightRadius: 20,
+        padding: 24,
+        minHeight: '60%',
+        alignItems: 'center',
+        justifyContent: 'center',
     },
 })
