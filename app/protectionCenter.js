@@ -37,8 +37,14 @@ export default function ProtectionCenter() {
   return (
     <SafeAreaView style={styles.container}>
       <View style={styles.header}>
-        <MaterialIcons name="arrow-back" size={24} color="#fff" />
-        <Text style={styles.headerTitle}>Central de Proteção</Text>
+        <TouchableOpacity
+          style={{ flexDirection: 'row', alignItems: 'center' }}
+          activeOpacity={0.7}
+          onPress={() => { /* ação para voltar ou abrir menu */ }}
+        >
+          <MaterialIcons name="chevron-left" size={24} color="#fff" />
+          <Text style={styles.headerTitle}>Central de Proteção</Text>
+        </TouchableOpacity>
       </View>
 
       {/* Bloco preto personalizado */}
@@ -51,10 +57,14 @@ export default function ProtectionCenter() {
             <Text style={styles.blockTopText}>
               Para ter mais segurança, ative as camadas de proteção
             </Text>
-            <View style={styles.blockSuasProtecoes}>
+            <TouchableOpacity
+              style={styles.blockSuasProtecoes}
+              activeOpacity={0.7}
+              onPress={() => { /* ação para Suas proteções */ }}
+            >
               <Text style={styles.suasProtecoesText}>Suas proteções</Text>
-              <MaterialIcons name="chevron-right" size={22} color="#ae3fd9" />
-            </View>
+              <MaterialIcons name="arrow-forward" size={19} color="#ae3fd9" />
+            </TouchableOpacity>
           </View>
         </View>
         <View style={styles.line}></View>
@@ -108,7 +118,7 @@ export default function ProtectionCenter() {
           <MaterialIcons name="chevron-right" size={24} color="#ccc" />
         </TouchableOpacity>
       </View>
-        {/* NOVO BLOCO FINAL */}
+      {/* NOVO BLOCO FINAL */}
       <View style={styles.bottomDiv}>
         <TouchableOpacity
           style={styles.bottomRow}
@@ -116,7 +126,7 @@ export default function ProtectionCenter() {
           onPress={() => { /* ação para Mais artigos */ }}
         >
           <Text style={styles.bottomPurpleText}>Mais artigos</Text>
-          <MaterialIcons name="chevron-right" size={22} color="#ae3fd9" style={{ marginLeft: 6 }} />
+          <MaterialIcons name="arrow-forward" size={20} color="#ae3fd9" style={{ marginLeft: 6 }} />
         </TouchableOpacity>
         <TouchableOpacity
           style={styles.bottomCenterRow}
@@ -335,6 +345,6 @@ const styles = StyleSheet.create({
   bottomCenterText: {
     color: '#ae3fd9',
     fontSize: 16,
-    marginLeft: 6,  
+    marginLeft: 6,
   },
 });
