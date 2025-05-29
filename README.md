@@ -34,20 +34,15 @@
 
 ## Dificuldades encontradas e como foram resolvidas
 
-- **Alinhamento de elementos**: Ajustes finos em flexbox e margens para garantir responsividade e visual agradável.
-- **Ícones e cores**: Garantir que todos os ícones e textos seguissem o padrão de cor definido no layout.
-- **Separadores de lista**: Para ocupar 100% da largura, foi necessário garantir que o componente da linha estivesse fora do bloco de texto e dentro do container correto.
-- **Áreas clicáveis**: Para tornar textos e ícones realmente clicáveis, foi preciso envolver todo o conteúdo em `TouchableOpacity` e ajustar o estilo.
+- **Componentização**: Foi necessário planejar e dividir o código em componentes reutilizáveis, o que exigiu organização e ajustes para manter o padrão visual e facilitar a manutenção.
+- **Criação de mais páginas**: Implementar novas telas e garantir a navegação correta entre elas demandou atenção à estrutura de rotas e integração dos componentes.
+- **Falta de um dos integrantes na parte da tarde**: A ausência de um membro da equipe em parte do desenvolvimento exigiu redistribuição de tarefas e colaboração extra dos demais integrantes para cumprir os prazos.
 
 ---
 
 ## Sugestões de melhorias futuras
 
-- **Internacionalização (i18n)** para suportar múltiplos idiomas.
-- **Acessibilidade**: adicionar suporte a leitores de tela e melhorar contraste.
-- **Navegação real**: implementar navegação entre telas usando React Navigation.
-- **Feedback visual**: adicionar animações ou feedbacks ao clicar nos botões.
-- **Testes automatizados**: criar testes unitários e de interface.
-- **Integração com backend**: conectar as opções a funcionalidades reais e dados dinâmicos.
+- **Adicionar mais páginas**: Expandir o app com novas telas para cobrir mais funcionalidades e fluxos de uso.
+- **Criar mais componentes reutilizáveis**: Investir na componentização para facilitar futuras manutenções e garantir consistência visual em todo o projeto.
 
 ---
