@@ -10,15 +10,16 @@ import {
   Alert,
 } from 'react-native';
 import { Ionicons } from '@expo/vector-icons';
+import { useRouter } from 'expo-router';
 
-export default function TaxesDeclaration({ navigation }) {
+export default function TaxesDeclaration() {
   const [busca, setBusca] = useState('');
+  const router = useRouter();
 
   // Função para os botões
-  const handleBack = () => Alert.alert('Voltar', 'Você pressionou para voltar.');
+  const handleBack = () => router.push('/HelpCenter');
   const handleDuvida = () => Alert.alert('Dúvida', 'Você escolheu: Receber restituição de IR');
   const handleCategoria = (categoria) => Alert.alert('Categoria', `Você abriu: ${categoria}`);
-
   return (
     <SafeAreaView style={styles.container}>
       {/* Header */}
@@ -29,7 +30,6 @@ export default function TaxesDeclaration({ navigation }) {
         <Text style={styles.headerTitle}>Declaração de Imposto de Renda</Text>
         <View style={{ width: 26 }} /> {/* Espaço para alinhar */}
       </View>
-
       <ScrollView style={{ flex: 1 }}>
         {/* Campo de busca */}
         <View style={styles.buscaContainer}>
