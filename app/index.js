@@ -13,21 +13,26 @@ import LoadingScreen from './enterPage';
 import { Link, useRouter } from 'expo-router';
 
 export default function Home() {
-    const [loading, setLoading] = useState(true)
-    const [nome] = useState('Jefferson')
+    const [loading, setLoading] = useState(true);
+    const [loginShown, setLoginShown] = useState(false); const [nome] = useState('Jefferson')
     const [showEye, setShowEye] = useState(false)
     const [modalVisible, setModalVisible] = useState(false);
     const [agencia] = useState('Nubank');
 
     const router = useRouter();
-
     useEffect(() => {
-        setTimeout(() => {
+        if (!loginShown && loading) {
+            const timer = setTimeout(() => {
+                setLoading(false);
+                setLoginShown(true);
+            }, 2000);
+            return () => clearTimeout(timer);
+        } else {
             setLoading(false);
-        }, 2000);
-    }, []);
+        }
+    }, [loginShown, loading]);
 
-    if (loading) {
+    if (loading && !loginShown) {
         return <LoadingScreen />;
     }
 
