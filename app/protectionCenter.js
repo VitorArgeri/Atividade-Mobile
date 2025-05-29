@@ -11,7 +11,7 @@ const options = [
   },
   {
     id: '2',
-    icon: 'lock',
+    icon: 'settings',
     title: 'Ajustes de segurança',
     description: 'Senhas e acessos',
   },
@@ -47,7 +47,7 @@ export default function ProtectionCenter() {
             </View>
           </View>
         </View>
-        <View style={styles.divider} />
+        <View style={styles.line}></View>
         <View style={styles.blockBottom}>
           <View style={{ flex: 1 }}>
             <Text style={styles.modoRuaTitle}>Modo Rua</Text>
@@ -60,23 +60,28 @@ export default function ProtectionCenter() {
           </TouchableOpacity>
         </View>
       </View>
-   
-      <FlatList
-        data={options}
-        keyExtractor={item => item.id}
-        renderItem={({ item }) => (
-          <TouchableOpacity style={styles.option}>
-            <MaterialIcons name={item.icon} size={28} color="#820ad1" />
-            <View style={styles.optionText}>
-              <Text style={styles.optionTitle}>{item.title}</Text>
-              <Text style={styles.optionDescription}>{item.description}</Text>
-            </View>
-            <MaterialIcons name="chevron-right" size={24} color="#ccc" />
-          </TouchableOpacity>
-        )}
-        style={styles.list}
-        showsVerticalScrollIndicator={false}
-      />
+
+      <View style={styles.flatListDiv}>
+        <Text style={styles.flatListTitle}>Mais opções de proteção</Text>
+        <FlatList
+          data={options}
+          keyExtractor={item => item.id}
+          renderItem={({ item }) => (
+            <>
+              <TouchableOpacity style={styles.option}>
+                <MaterialIcons name={item.icon} size={28} color="#820ad1" />
+                <View style={styles.optionText}>
+                  <Text style={styles.optionTitle}>{item.title}</Text>
+                  <Text style={styles.optionDescription}>{item.description}</Text>
+                </View>
+                <MaterialIcons name="chevron-right" size={24} color="#ccc" />
+              </TouchableOpacity>
+              <View style={styles.securityLine}></View>
+            </>
+          )}
+          style={styles.list}
+          showsVerticalScrollIndicator={false}
+        />      </View>
     </SafeAreaView>
   );
 }
@@ -84,7 +89,7 @@ export default function ProtectionCenter() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: '#696969',
+    backgroundColor: '#666666',
     paddingHorizontal: 20,
   },
   header: {
@@ -127,7 +132,7 @@ const styles = StyleSheet.create({
   blockTopText: {
     color: '#fff',
     fontSize: 15,
-    fontWeight: '500',
+    fontWeight: '300',
     marginBottom: 10,
   },
   blockSuasProtecoes: {
@@ -164,7 +169,7 @@ const styles = StyleSheet.create({
     marginRight: 10,
   },
   ativarButton: {
-    backgroundColor: '#820ad1',
+    backgroundColor: '#701198',
     borderRadius: 20,
     paddingVertical: 8,
     paddingHorizontal: 22,
@@ -212,7 +217,33 @@ const styles = StyleSheet.create({
   },
   optionDescription: {
     fontSize: 14,
-    color: '#666',
+    color: '#6a6a6a',
     marginTop: 4,
+  },
+  line: {
+    height: 1,
+    width: '100%',
+    backgroundColor: '#2E2E2E',
+    marginTop: 20,
+    marginBottom: 20,
+  },
+  flatListDiv: {
+    backgroundColor: '#000',
+    padding: 16,
+    marginBottom: 20,
+    width: '100%',
+  },
+  flatListTitle: {
+    color: 'grey',
+    fontSize: 12,
+    fontWeight: 'bold',
+    marginBottom: 30,
+  },
+  securityLine: {
+    height: 1,
+    width: '100%',
+    backgroundColor: '#2E2E2E',
+    marginTop: 0,
+    marginBottom: 0,
   },
 });
