@@ -76,7 +76,12 @@ export default function HelpCenter() {
         </View>
         {/* Dúvidas rápidas */}
         <Text style={styles.duvidasTitulo}>Dúvidas que podem te ajudar</Text>
-        <View style={styles.duvidaBoxRow}>
+        <ScrollView
+          horizontal
+          showsHorizontalScrollIndicator={false}
+          contentContainerStyle={[styles.duvidaBoxRow, { gap: 10, paddingHorizontal: 18 }]}
+          style={{ marginBottom: 28 }}
+        >
           <DuvidaBox
             icon={<Ionicons name="person-outline" size={24} color="#a259e6" />}
             label="Alterar e-mail cadastrado"
@@ -87,31 +92,31 @@ export default function HelpCenter() {
             label="Alterar endereço de cadastrado"
             onPress={() => handleDuvida('Alterar endereço de cadastrado')}
           />
-           <DuvidaBox
+          <DuvidaBox
             icon={<Ionicons name="person-outline" size={24} color="#a259e6" />}
             label="Abrir conta para menores de 18 anos"
             onPress={() => handleDuvida('Abrir conta para menores de 18 anos')}
           />
-        </View>
+        </ScrollView>
         {/* Principais dúvidas */}
         <Text style={styles.principaisTitulo}>Principais dúvidas sobre</Text>
 
         <TouchableOpacity style={styles.principalBox} onPress={() => handlePrincipal('Declaração de Imposto de Renda')}>
           <View style={styles.principalIcon}>
-            <MaterialCommunityIcons name="file-document-outline" size={22} color="#fff" />
+            <MaterialCommunityIcons name="file-document-outline" size={22} color="#fff" /> {/* Documento */}
           </View>
-            <View style={{ flex: 1 }}>
+          <View style={{ flex: 1 }}>
             <Text style={styles.principalTitle}>Declaração de Imposto de Renda</Text>
             <Text style={styles.principalDesc}>Guia completo sobre tudo que você precisa...</Text>
           </View>
-        <Ionicons name="chevron-forward" size={22} color="#fff" style={styles.seta} />
+          <Ionicons name="chevron-forward" size={22} color="#fff" style={styles.seta} />
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.principalBox} onPress={() => handlePrincipal('Cartão de crédito')}>
           <View style={styles.principalIcon}>
-            <MaterialIcons name="credit-card" size={22} color="#fff" />
+            <MaterialIcons name="credit-card" size={22} color="#fff" /> {/* Cartão */}
           </View>
-             <View style={{ flex: 1 }}>
+          <View style={{ flex: 1 }}>
             <Text style={styles.principalTitle}>Cartão de crédito</Text>
             <Text style={styles.principalDesc}>Limite de crédito, gerenciar cartão, Ultra...</Text>
           </View>
@@ -120,69 +125,69 @@ export default function HelpCenter() {
 
         <TouchableOpacity style={styles.principalBox} onPress={() => handlePrincipal('Empréstimo')}>
           <View style={styles.principalIcon}>
-            <MaterialIcons name="credit-card" size={22} color="#fff" />
+            <MaterialCommunityIcons name="cash-multiple" size={22} color="#fff" /> {/* Empréstimo */}
           </View>
-             <View style={{ flex: 1 }}>
+          <View style={{ flex: 1 }}>
             <Text style={styles.principalTitle}>Empréstimos</Text>
             <Text style={styles.principalDesc}>Contratação, gerenciar empréstimos, pa...</Text>
           </View>
-        <Ionicons name="chevron-forward" size={22} color="#fff" style={styles.seta} />
+          <Ionicons name="chevron-forward" size={22} color="#fff" style={styles.seta} />
         </TouchableOpacity>
 
         <TouchableOpacity style={styles.principalBox} onPress={() => handlePrincipal('Pix')}>
           <View style={styles.principalIcon}>
-            <MaterialIcons name="credit-card" size={22} color="#fff" />
+            <MaterialCommunityIcons name="qrcode-scan" size={22} color="#fff" /> {/* Pix */}
           </View>
-            <View style={{ flex: 1 }}>
+          <View style={{ flex: 1 }}>
             <Text style={styles.principalTitle}>Pix</Text>
             <Text style={styles.principalDesc}>Pagamentos, chaves Pix, limites,  seguran...</Text>
           </View>
           <Ionicons name="chevron-forward" size={22} color="#fff" style={styles.seta} />
-         </TouchableOpacity>
+        </TouchableOpacity>
 
-         <TouchableOpacity style={styles.principalBox} onPress={() => handlePrincipal('Conta')}>
+        <TouchableOpacity style={styles.principalBox} onPress={() => handlePrincipal('Conta')}>
           <View style={styles.principalIcon}>
-            <MaterialIcons name="credit-card" size={22} color="#fff" />
+            <MaterialCommunityIcons name="bank-outline" size={22} color="#fff" /> {/* Conta */}
           </View>
-            <View style={{ flex: 1 }}>
+          <View style={{ flex: 1 }}>
             <Text style={styles.principalTitle}>Conta</Text>
             <Text style={styles.principalDesc}>Extrato da conta, portabilidade de salário...</Text>
           </View>
           <Ionicons name="chevron-forward" size={22} color="#fff" style={styles.seta} />
-         </TouchableOpacity>
+        </TouchableOpacity>
 
-         <TouchableOpacity style={styles.principalBox} onPress={() => handlePrincipal('Dados pessoais e segurança')}>
+        <TouchableOpacity style={styles.principalBox} onPress={() => handlePrincipal('Dados pessoais e segurança')}>
           <View style={styles.principalIcon}>
-            <MaterialIcons name="credit-card" size={22} color="#fff" />
+            <MaterialCommunityIcons name="account-lock-outline" size={22} color="#fff" /> {/* Segurança */}
           </View>
-            <View style={{ flex: 1 }}>
+          <View style={{ flex: 1 }}>
             <Text style={styles.principalTitle}>Dados pessoais e segurança</Text>
             <Text style={styles.principalDesc}>Informações pessoais, endereços, senha...</Text>
           </View>
           <Ionicons name="chevron-forward" size={22} color="#fff" style={styles.seta} />
-         </TouchableOpacity>
+        </TouchableOpacity>
 
-         <TouchableOpacity style={styles.principalBox} onPress={() => handlePrincipal('Pagamento de boletos e fatura')}>
+        <TouchableOpacity style={styles.principalBox} onPress={() => handlePrincipal('Pagamento de boletos e fatura')}>
           <View style={styles.principalIcon}>
-            <MaterialIcons name="credit-card" size={22} color="#fff" />
+            <MaterialCommunityIcons name="barcode" size={22} color="#fff" /> {/* Boleto */}
           </View>
-            <View style={{ flex: 1 }}>
+          <View style={{ flex: 1 }}>
             <Text style={styles.principalTitle}>Pagamento de boletos e fatura</Text>
             <Text style={styles.principalDesc}>Pagamento da fatura do cartão, pagame...</Text>
           </View>
           <Ionicons name="chevron-forward" size={22} color="#fff" style={styles.seta} />
-         </TouchableOpacity>
+        </TouchableOpacity>
 
-         <TouchableOpacity style={styles.principalBox} onPress={() => handlePrincipal('Entrega e Reemissão de Cartão')}>
+        <TouchableOpacity style={styles.principalBox} onPress={() => handlePrincipal('Entrega e Reemissão de Cartão')}>
           <View style={styles.principalIcon}>
-            <MaterialIcons name="credit-card" size={22} color="#fff" />
+            <MaterialCommunityIcons name="truck-delivery-outline" size={22} color="#fff" /> {/* Entrega/Reemissão */}
           </View>
-            <View style={{ flex: 1 }}>
+          <View style={{ flex: 1 }}>
             <Text style={styles.principalTitle}>Entrega e Reemissão de Cartão</Text>
             <Text style={styles.principalDesc}>Saiba mais sobre Entrega e Reemissão d...</Text>
           </View>
           <Ionicons name="chevron-forward" size={22} color="#fff" style={styles.seta} />
-         </TouchableOpacity>
+        </TouchableOpacity>
 
       </ScrollView>
     </SafeAreaView>

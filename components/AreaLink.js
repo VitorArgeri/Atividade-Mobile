@@ -1,4 +1,4 @@
-import { View, Text, StyleSheet, Image, Dimensions } from 'react-native';
+import { View, Text, StyleSheet, Dimensions } from 'react-native';
 import { Link } from 'expo-router';
 
 const screenWidth = Dimensions.get('window').width;
@@ -8,14 +8,7 @@ export default function AreaLink({ link, icon, areaText }) {
         <View style={styles.container}>
             <Link href={link}>
                 <View style={styles.circle}>
-                    <Image
-                        source={icon}
-                        style={{
-                            width: screenWidth * 0.15,
-                            height: screenWidth * 0.15,
-                            borderRadius: screenWidth * 0.075,
-                        }}
-                    />
+                    {icon}
                 </View>
             </Link>
             <Text style={styles.areaText}>{areaText}</Text>
@@ -32,7 +25,7 @@ const styles = StyleSheet.create({
     circle: {
         borderRadius: 100,
         backgroundColor: '#2E2E2E',
-        width: 60, 
+        width: 60,
         height: 60,
         justifyContent: 'center',
         alignItems: 'center',
@@ -43,6 +36,6 @@ const styles = StyleSheet.create({
         marginTop: 10,
         textAlign: 'center',
         flexWrap: 'wrap',
-        maxWidth: 80, 
+        maxWidth: 80,
     },
 });
