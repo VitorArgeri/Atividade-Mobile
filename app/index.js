@@ -23,15 +23,15 @@ export default function Home() {
             <View style={styles.header}>
                 <View style={styles.lineOne}>
                     <View style={styles.iconDiv}>
-                        <Ionicons name="person-circle-outline" />
+                        <Ionicons name="person-circle-outline" style={styles.icon} size={24} />
                     </View>
                     <View style={styles.nav}>
                         <TouchableOpacity onPress={() => setShowEye(!showEye)}>
                             <Ionicons
                                 name={showEye ? "eye-outline" : "eye-off-outline"}
-                                size={32} 
+                                size={32}
                                 style={styles.icon}
-                                />
+                            />
                         </TouchableOpacity>
 
                         <Ionicons name="help-circle-outline" style={styles.icon} size={32} />
@@ -40,7 +40,7 @@ export default function Home() {
                 </View>
 
                 <View style={styles.lineTwo}>
-                    <Text>Olá, {nome}</Text>
+                    <Text style={styles.greetingsText}>Olá, {nome}</Text>
                 </View>
             </View>
         </SafeAreaView>
@@ -54,7 +54,7 @@ const styles = StyleSheet.create({
     },
     header: {
         padding: 20,
-        backgroundColor: '#9400d3',
+        backgroundColor: '#52057b',
         flexDirection: 'column',
         alignItems: 'center',
     },
@@ -77,5 +77,22 @@ const styles = StyleSheet.create({
     },
     icon: {
         color: '#fff',
+    },
+    iconDiv: {
+        backgroundColor: '#892cdc',
+        borderRadius: 100,
+        width: '50px',
+        alignItems: 'center',
+        justifyContent: 'center',
+        height: '50px',
+    },
+    lineTwo: {
+        marginTop: 15,
+        alignSelf: 'flex-start',
+    },
+    greetingsText: {
+        color: '#fff',
+        fontSize: 20,
+        fontWeight: 'bold',
     },
 })
